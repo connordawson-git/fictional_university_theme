@@ -13,11 +13,29 @@ get_header();
         </div>
         <div class="container container--narrow page-section">
             <div class="generic-content">
-            <div class="metabox metabox--position-up metabox--with-home-link">
-                <p><a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('professor');?>"><i class="fa fa-home" aria-hidden="true"></i>Profesors Home</a> <span class="metabox__main"><?php echo get_field('professor_subject');?> </span></p>
-            </div>               
-                <?php the_content();?>
+              <div class="row group">
+                    <div class="one-third">
+                        <?php the_post_thumbnail('professorPortrait');?>
+                    </div>
+                    <div class="two-thirds">
+                          <?php the_content();?>
+                    </div>
+              </div>
             </div>
+
+            <?php
+                $relatedPrograms = get_field('related_programs');
+
+                if ($relatedPrograms) {
+                    echo '<hr class="section-break">';
+                    echo '<h3 class="headline headline--medium">Subjects Taught</h3>';
+                    echo '<ul class="link-list min-list">';
+                    foreach ($relatedPrograms as $program) { ?>
+                        <li><a href="<?php echo get_the_permalink($program);?>"><?php echo get_the_title($program);?></a></li>
+                    <?php }
+                        echo '</ul>';
+                    }
+                ?>   
         </div>    
     <?php }
 get_footer();    
