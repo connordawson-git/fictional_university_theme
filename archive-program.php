@@ -1,16 +1,11 @@
 <?php
 
-get_header();?>
-
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('images/ocean.jpg')?>);"></div>
-    <div class="page-banner__content container container--narrow">
-      <h1 class="page-banner__title">All Programs</h1>
-      <div class="page-banner__intro">
-        <p style="text-transform: uppercase;">List of our programs</p>
-      </div>
-    </div>  
-  </div>
+get_header();
+pageBanner([
+  'title' => 'All Programs',
+  'subtitle' => 'List of our programs'
+]);
+?>
 
   <div class="container container--narrow page-section">
     <ul class="link-list min-list">
